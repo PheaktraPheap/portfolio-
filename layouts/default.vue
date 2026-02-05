@@ -5,6 +5,7 @@
            dark:from-gray-900 dark:to-gray-950
            transition-colors duration-300"
   >
+  <Analytics />
     <!-- Header -->
     <Header />
 
@@ -68,6 +69,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/vue'
 useHead({
   htmlAttrs: {
     lang: 'en'
