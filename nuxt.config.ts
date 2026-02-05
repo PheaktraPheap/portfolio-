@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   colorMode: {
     classSuffix: '', // So Tailwind's `dark:` works directly
-    preference: 'dark', // <-- default to dark mode
-    fallback: 'dark'    // fallback if no preference is saved
+    preference: 'light', // <-- default to light mode
+    fallback: 'light'    // fallback if no preference is saved
   },
   postcss: {
     plugins: {
