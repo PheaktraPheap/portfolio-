@@ -11,18 +11,18 @@
         </p>
       </div>
 
-      <!-- Simple 3-column Grid -->
+      <!-- Animated Grid -->
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div
-          v-for="project in projects"
+          v-for="(project, index) in projects"
           :key="project.id"
-          class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+          ref="projectCards"
+          :class="[
+            'bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm transform transition-all duration-700',
+            projectVisible[index] ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+          ]"
+          :style="projectVisible[index] ? `transition-delay: ${index*0.1}s` : ''"
         >
-          <!-- <img
-            :src="project.image"
-            :alt="project.title"
-            class="w-full h-48 object-cover"
-          /> -->
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               {{ project.title }}
@@ -46,28 +46,41 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 const projects = [
-  {
-    id: 1,
-    title: 'Pisen Dealer App API',
-    description: 'Complete RESTful API for e-commerce with user authentication, product management, and payment integration.',
-    image: '/api-project-1.jpg',
-    technologies: ['Laravel', 'MySQL', 'Nuxt 2', 'JWT']
-  },
-  {
-    id: 2,
-    title: 'ERA App API',
-    description: 'School management system with real-time notifications, attendance tracking, and reporting features.',
-    image: '/api-project-2.jpg',
-    technologies: ['Laravel','MySQL', 'Nuxt 3', 'JWT',]
-  },
-  {
-    id: 3,
-    title: 'Fashion App API',
-    description: 'Product Clothing e-commerce API with advanced search, filtering, and order processing capabilities.',
-    image: '/api-project-3.jpg',
-    technologies: ['Laravel','MySQL', 'Nuxt 3', 'JWT',]
-  },
+  { id: 1, title: 'Pisen Dealer App API', description: 'Complete RESTful API for e-commerce with user authentication, product management, and payment integration.', technologies: ['Laravel', 'MySQL', 'Nuxt 2', 'JWT'] },
+  { id: 2, title: 'ERA App API', description: 'School management system with real-time notifications, attendance tracking, and reporting features.', technologies: ['Laravel','MySQL', 'Nuxt 3', 'JWT'] },
+  { id: 3, title: 'Fashion App API', description: 'Product Clothing e-commerce API with advanced search, filtering, and order processing capabilities.', technologies: ['Laravel','MySQL', 'Nuxt 2', 'JWT'] },
+  { id: 4, title: 'AALL App API', description: 'Product Clothing e-commerce API with advanced search, filtering, and order processing capabilities.', technologies: ['Laravel','MySQL', 'Nuxt 4', 'Firebase Auth'] },
 ]
+
+const projectCards = ref<HTMLElement[]>([])
+const projectVisible = ref<boolean[]>(projects.map(() => false))
+
+onMounted(() => {
+  if (!projectCards.value.length) return
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        const index = projectCards.value.indexOf(entry.target as HTMLElement)
+        if (entry.isIntersecting && index !== -1) {
+          projectVisible.value[index] = true
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  projectCards.value.forEach(card => observer.observe(card))
+})
 </script>
+
+<style scoped>
+/* Optional easing for smoother animation */
+.transition-all {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
