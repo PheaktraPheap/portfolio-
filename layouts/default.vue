@@ -86,7 +86,7 @@ useHead({
     { name: 'twitter:site', content: '@PheapSopheaktra' }
   ],
   link: [
-    { rel: 'canonical', href: 'https://pheap-sopheaktra.vercel.app/' },
+    { rel: 'canonical', href: 'https://www.sopheaktra.site/' },
     { rel: 'manifest', href: '/site.webmanifest' }
   ],
   script: [
@@ -97,8 +97,8 @@ useHead({
         "@type": "Person",
         "name": "Pheap Sopheaktra",
         "alternateName": "Pheaktra Pheap",
-        "url": "https://pheap-sopheaktra.vercel.app/",
-        "image": "https://pheap-sopheaktra.vercel.app/profile.jpg",
+        "url": "https://www.sopheaktra.site/",
+        "image": "https://www.sopheaktra.site/profile.jpg",
         "jobTitle": "Full-Stack Developer & API Specialist",
         "description": "Full-stack developer specializing in backend systems, real-time APIs, Laravel, Nuxt, WebSockets, and scalable architecture.",
         "worksFor": {

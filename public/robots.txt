@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pheap-sopheaktra.vercel.app/sitemap.xml
+Sitemap: https://www.sopheaktra.site/sitemap.xml

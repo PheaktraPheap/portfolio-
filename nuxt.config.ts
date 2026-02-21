@@ -40,10 +40,10 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Pheap Sopheaktra | Full-Stack Developer' },
         { property: 'og:description', content: 'Portfolio showcasing API development, backend solutions, and full-stack projects.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://pheap-sopheaktra.vercel.app/' },
+        { property: 'og:url', content: 'https://www.sopheaktra.site/' },
         {
           property: 'og:image',
-          content: 'https://pheap-sopheaktra.vercel.app/social-preview.png'
+          content: 'https://www.sopheaktra.site/social-preview.png'
         },
 
         // Twitter
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: 'Portfolio showcasing API development, backend solutions, and full-stack projects.' },
         {
           name: 'twitter:image',
-          content: 'https://pheap-sopheaktra.vercel.app/social-preview.png'
+          content: 'https://www.sopheaktra.site/social-preview.png'
         }
       ],
       link: [
